@@ -31,14 +31,16 @@ export default function HomeStack() {
             size={24}
             color='#fff'
             onPress={handleSignOut}
-            stye={{
-              paddingRight: 12
-            }}
           />
         ),
         headerMode: 'screen',
         headerTintColor: 'white',
-        headerStyle: { backgroundColor: '#CC7178' },
+        headerStyle: {
+          backgroundColor: '#CC7178',
+         },
+         headerRightContainerStyle: {
+           paddingRight: 12
+         }
       }}>
       <Stack.Screen name='Home' component={HomeScreen} />
       <Stack.Screen name='CreatePost' component={CreatePost} />

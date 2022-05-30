@@ -20,15 +20,6 @@ export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar style='dark-content' />
-      {/* <View style={styles.header}>
-        <Text style={styles.title}>M@X</Text>
-        <IconButton
-          name='logout'
-          size={24}
-          color='#5E747F'
-          onPress={handleSignOut}
-        />
-      </View> */}
       <View style={{
         flexDirection: 'row',
         justifyContent: 'flex-end',
@@ -47,20 +38,10 @@ export default function HomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 24,
-    borderBottomColor: '#5E747F',
-    borderBottomWidth: 1,
-    paddingHorizontal: 12,
-    paddingBottom: 12
-  },
   container: {
     flex: 1,
     backgroundColor: '#F3E1DD',
-    paddingTop: 80,
+    paddingTop: 10,
   },
   row: {
     flexDirection: 'row',
