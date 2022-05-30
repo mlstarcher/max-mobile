@@ -2,8 +2,8 @@ import 'dotenv/config';
 
 export default {
   expo: {
-    name: 'mondays-at-ten',
-    slug: 'mondays-at-ten',
+    name: 'MAX Mobile',
+    slug: 'max-mobile',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',

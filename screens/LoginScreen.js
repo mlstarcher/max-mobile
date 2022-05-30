@@ -78,7 +78,7 @@ export default function LoginScreen({ navigation }) {
       {loginError ? <ErrorMessage error={loginError} visible={true} /> : null}
       <Button
         onPress={onLogin}
-        backgroundColor='#f57c00'
+        backgroundColor='#006FB9'
         title='Login'
         tileColor='#fff'
         titleSize={20}
@@ -98,7 +98,7 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e93b81',
+    backgroundColor: '#E4E4E4',
     paddingTop: 50,
     paddingHorizontal: 12
   },
