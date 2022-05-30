@@ -8,7 +8,7 @@ import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvide
 
 const auth = Firebase.auth();
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const { user } = useContext(AuthenticatedUserContext);
   const handleSignOut = async () => {
     try {
@@ -20,25 +20,26 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <StatusBar style='dark-content' />
-      <View style={styles.row}>
-        <Text style={styles.title}>Welcome to Mondays at Ten! {"\n"} {user.email}</Text>
+      {/* <View style={styles.header}>
+        <Text style={styles.title}>M@X</Text>
         <IconButton
           name='logout'
           size={24}
-          color='#717171'
+          color='#5E747F'
           onPress={handleSignOut}
         />
-      </View>
+      </View> */}
       <View style={{
         flexDirection: 'row',
-        justifyContent: 'flex-end'
-        }}>
-      {/* <Text style={styles.text}>Your UID is: {user.uid} </Text> */}
-      <IconButton
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingRight: 12
+      }}>
+        <IconButton
           name='pluscircleo'
           size={48}
-          color='#717171'
-          // onPress={() => '';}
+          color='#5E747F'
+          onPress={() => navigation.navigate('CreatePost')}
         />
       </View>
     </View>
@@ -46,14 +47,20 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  body: {
-
-    },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 24,
+    borderBottomColor: '#5E747F',
+    borderBottomWidth: 1,
+    paddingHorizontal: 12,
+    paddingBottom: 12
+  },
   container: {
     flex: 1,
     backgroundColor: '#F3E1DD',
     paddingTop: 80,
-    paddingHorizontal: 12
   },
   row: {
     flexDirection: 'row',
@@ -64,7 +71,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '800',
-    color: '#333333'
+    color: '#CC7178'
   },
   text: {
     fontSize: 16,
