@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 import { IconButton } from '../components';
 import Firebase from '../config/firebase';
@@ -21,24 +21,38 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <StatusBar style='dark-content' />
       <View style={styles.row}>
-        <Text style={styles.title}>Welcome {user.email}!</Text>
+        <Text style={styles.title}>Welcome to Mondays at Ten! {"\n"} {user.email}</Text>
         <IconButton
           name='logout'
           size={24}
-          color='#fff'
+          color='#717171'
           onPress={handleSignOut}
         />
       </View>
-      <Text style={styles.text}>Your UID is: {user.uid} </Text>
+      <View style={{
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+        }}>
+      {/* <Text style={styles.text}>Your UID is: {user.uid} </Text> */}
+      <IconButton
+          name='pluscircleo'
+          size={48}
+          color='#717171'
+          // onPress={() => '';}
+        />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  body: {
+
+    },
   container: {
     flex: 1,
-    backgroundColor: '#717171',
-    paddingTop: 50,
+    backgroundColor: '#F3E1DD',
+    paddingTop: 80,
     paddingHorizontal: 12
   },
   row: {
@@ -49,8 +63,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: '600',
-    color: '#fff'
+    fontWeight: '800',
+    color: '#333333'
   },
   text: {
     fontSize: 16,

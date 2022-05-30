@@ -8,7 +8,7 @@ export default {
     orientation: 'portrait',
     icon: './assets/icon.png',
     splash: {
-      image: './assets/splash.png',
+      image: './assets/max_splash.png',
       resizeMode: 'contain',
       backgroundColor: '#ffffff'
     },

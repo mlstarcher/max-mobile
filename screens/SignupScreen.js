@@ -44,7 +44,7 @@ export default function SignupScreen({ navigation }) {
           fontSize: 14
         }}
         containerStyle={{
-          backgroundColor: '#717171',
+          backgroundColor: '#fff',
           marginBottom: 20
         }}
         leftIcon='email'
@@ -78,7 +78,7 @@ export default function SignupScreen({ navigation }) {
       {signupError ? <ErrorMessage error={signupError} visible={true} /> : null}
       <Button
         onPress={onHandleSignup}
-        backgroundColor='#f57c00'
+        backgroundColor='#006FB9'
         title='Signup'
         tileColor='#fff'
         titleSize={20}
@@ -89,7 +89,7 @@ export default function SignupScreen({ navigation }) {
       <RNButton
         onPress={() => navigation.navigate('Login')}
         title='Go to Login'
-        color='#fff'
+        color='#006FB9'
       />
     </View>
   );
@@ -98,14 +98,14 @@ export default function SignupScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e93b81',
-    paddingTop: 50,
+    backgroundColor: '#F3E1DD',
+    paddingTop: 80,
     paddingHorizontal: 12
   },
   title: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#fff',
+    color: '#333333',
     alignSelf: 'center',
     paddingBottom: 24
   }

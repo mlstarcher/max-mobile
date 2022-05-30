@@ -44,7 +44,7 @@ export default function LoginScreen({ navigation }) {
           fontSize: 14
         }}
         containerStyle={{
-          backgroundColor: '#717171',
+          backgroundColor: '#fff',
           marginBottom: 20
         }}
         leftIcon='email'
@@ -89,7 +89,7 @@ export default function LoginScreen({ navigation }) {
       <RNButton
         onPress={() => navigation.navigate('Signup')}
         title='Go to Signup'
-        color='#fff'
+        color='#006FB9'
       />
     </View>
   );
@@ -98,14 +98,14 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E4E4E4',
-    paddingTop: 50,
+    backgroundColor: '#F3E1DD',
+    paddingTop: 80,
     paddingHorizontal: 12
   },
   title: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#fff',
+    color: '#333333',
     alignSelf: 'center',
     paddingBottom: 24
   }
