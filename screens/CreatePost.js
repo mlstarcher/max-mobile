@@ -29,6 +29,7 @@ export default function CreatePost() {
         tileColor='#fff'
         titleSize={20}
         containerStyle={{
+          marginTop: 12
         }}
       />
     </View>
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F3E1DD',
     paddingTop: 20,
+    paddingHorizontal: 12
   },
   row: {
     flexDirection: 'row',
@@ -53,9 +55,7 @@ const styles = StyleSheet.create({
     color: '#CC7178'
   },
   input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
+    height: 250,
     padding: 10,
   },
   text: {
