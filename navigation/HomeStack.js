@@ -33,7 +33,7 @@ export default function HomeStack() {
             onPress={handleSignOut}
           />
         ),
-        headerMode: 'screen',
+        headerMode: 'float',
         headerTintColor: 'white',
         headerStyle: {
           backgroundColor: '#CC7178',

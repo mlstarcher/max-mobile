@@ -22,9 +22,8 @@ export default function HomeScreen({ navigation }) {
       <StatusBar style='dark-content' />
       <View style={{
         flexDirection: 'row',
-        justifyContent: 'flex-end',
         alignItems: 'center',
-        paddingRight: 12
+        paddingLeft: 12
       }}>
         <IconButton
           name='pluscircleo'
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F3E1DD',
-    paddingTop: 10,
+    paddingTop: 20,
   },
   row: {
     flexDirection: 'row',

@@ -4,7 +4,7 @@ import { View, ActivityIndicator } from 'react-native';
 
 import Firebase from '../config/firebase';
 import { AuthenticatedUserContext } from './AuthenticatedUserProvider';
-import AuthStack from './AuthStack';
+import AuthStack from '../screens/AuthStack';
 import HomeStack from './HomeStack';
 
 const auth = Firebase.auth();
