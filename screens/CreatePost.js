@@ -6,24 +6,43 @@ import { Button } from '../components';
 import Firebase from '../config/firebase';
 import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
 
+const db = Firebase.firestore();
+
 export default function CreatePost() {
   const [text, onChangeText] = useState("");
-    const { user } = useContext(AuthenticatedUserContext);
+  const { user } = useContext(AuthenticatedUserContext);
+
+  let submit = () => {
+    console.log(user)
+    let payload = {
+      user: user.uid,
+      textContent: text,
+      //url: null
+    }
+    db.collection("posts").add(payload)
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar style='dark-content' />
       <View style={styles.textAreaContainer}>
         <TextInput
-        multiline={true}
-        numberOfLines={10}
-        style={styles.input}
-        onChangeText={onChangeText}
-        value={text}
-        placeholder="Write your post here"
-      />
+          multiline={true}
+          numberOfLines={10}
+          style={styles.input}
+          onChangeText={onChangeText}
+          value={text}
+          placeholder="Write your post here"
+        />
       </View>
       <Button
-        //onPress={onLogin}
+        onPress={submit}
         backgroundColor='#006FB9'
         title='Submit'
         tileColor='#fff'
