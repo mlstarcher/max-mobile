@@ -13,7 +13,6 @@ export default function CreatePost() {
   const { user } = useContext(AuthenticatedUserContext);
 
   let submit = () => {
-    console.log(user)
     let payload = {
       user: user.uid,
       textContent: text,
