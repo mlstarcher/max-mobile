@@ -3,36 +3,33 @@ import React, { useContext, useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 import { IconButton } from '../components';
-import Firebase from '../config/firebase1';
+import { auth, db } from '../config/firebase'
 import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
-import Post from '../components/Post';
-
-const auth = Firebase.auth();
-const db = Firebase.firestore();
+// import Post from '../components/Post';
 
 export default function HomeScreen({ navigation }) {
+  console.log('HomeScreen');
   const [posts, setPosts] = useState([]);
   const { user } = useContext(AuthenticatedUserContext);
 
   useEffect(() => {
     let allPosts = [];
-    db.collection("posts").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
+    // db.collection("posts").get().then((querySnapshot) => {
+    //   querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         //allPosts.push(doc.data());
-      });
-    });
+      // });
+    // });
     //setPosts(allPosts);
-    console.log('Posts: ', posts)
   })
 
-  const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleSignOut = async () => {
+  //   try {
+  //     await auth.signOut();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   return (
     <View style={styles.container}>
       <StatusBar style='dark-content' />

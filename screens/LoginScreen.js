@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, Button as RNButton } from 'react-native';
 
 import { Button, InputField, ErrorMessage } from '../components';
-import Firebase from '../config/firebase';
+// import Firebase from '../config/firebase';
 
-const auth = Firebase.auth();
+// const auth = Firebase.auth();
 
 export default function LoginScreen({ navigation }) {
+  console.log('LoginScreen')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisibility, setPasswordVisibility] = useState(true);

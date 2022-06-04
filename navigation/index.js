@@ -8,6 +8,7 @@ import RootNavigator from './RootNavigator';
  */
 
 export default function Routes() {
+  console.log('index')
   return (
     <AuthenticatedUserProvider>
       <RootNavigator />

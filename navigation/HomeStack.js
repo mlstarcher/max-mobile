@@ -5,18 +5,18 @@ import { auth } from '../config/firebase';
 import HomeScreen from '../screens/HomeScreen';
 import CreatePost from '../screens/CreatePost';
 import { IconButton } from '../components';
+import { useEffect } from 'react/cjs/react.production.min';
 
 const Stack = createStackNavigator();
-//const auth = Firebase.auth();
 
-export default function HomeStack() {
-  const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export default function HomeStack({ logOut }) {
+  // const handleSignOut = async () => {
+  //   try {
+  //     await auth.signOut();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <Stack.Navigator
@@ -30,7 +30,7 @@ export default function HomeStack() {
             name='logout'
             size={24}
             color='#fff'
-            onPress={handleSignOut}
+            onPress={logOut}
           />
         ),
         headerMode: 'float',

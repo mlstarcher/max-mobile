@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, Text } from 'react-native';
+import { onAuthStateChanged } from 'firebase/auth';
 
 import { auth } from '../config/firebase';
 import { AuthenticatedUserContext } from './AuthenticatedUserProvider';
@@ -10,21 +11,32 @@ import HomeStack from './HomeStack';
 export default function RootNavigator() {
   const { user, setUser } = useContext(AuthenticatedUserContext);
   const [isLoading, setIsLoading] = useState(true);
+  console.log('RootNavigator')
+  // useEffect(() => {
+    // onAuthStateChanged returns an unsubscriber
+  //   const unsubscribeAuth = auth.onAuthStateChanged(async authenticatedUser => {
+  //     try {
+  //       await (authenticatedUser ? setUser(authenticatedUser) : setUser(null));
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   });
+
+  //   // unsubscribe auth listener on unmount
+  //   return unsubscribeAuth;
+  // }, []);
 
   useEffect(() => {
-    // onAuthStateChanged returns an unsubscriber
-    const unsubscribeAuth = auth.onAuthStateChanged(async authenticatedUser => {
-      try {
-        await (authenticatedUser ? setUser(authenticatedUser) : setUser(null));
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    });
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      console.log('unsubscribe');
+      setUser(user)
+      setIsLoading(false)
+    })
+    console.log('user:', user)
+    return unsubscribe;
+  }, [])
 
-    // unsubscribe auth listener on unmount
-    return unsubscribeAuth;
-  }, []);
 
   if (isLoading) {
     return (
