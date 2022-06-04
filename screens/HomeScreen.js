@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 import { IconButton } from '../components';
 import { auth, db } from '../config/firebase'
-import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
+import { AuthenticatedUserContext } from '../contexts/AuthenticatedUserProvider';
 // import Post from '../components/Post';
 
 export default function HomeScreen({ navigation }) {

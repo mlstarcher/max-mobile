@@ -4,7 +4,7 @@ import { View, ActivityIndicator, Text } from 'react-native';
 import { onAuthStateChanged } from 'firebase/auth';
 
 import { auth } from '../config/firebase';
-import { AuthenticatedUserContext } from './AuthenticatedUserProvider';
+import { AuthenticatedUserContext } from '../contexts/AuthenticatedUserProvider';
 import AuthStack from '../screens/AuthStack';
 import HomeStack from './HomeStack';
 
@@ -29,7 +29,6 @@ export default function RootNavigator() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
-      console.log('unsubscribe');
       setUser(user)
       setIsLoading(false)
     })

@@ -5,7 +5,7 @@ import { Button } from '../components';
 // import { black } from 'react-native-paper/lib/typescript/styles/colors';
 // import Firebase from '../config/firebase1';
 import { auth, db } from '../config/firebase'
-import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
+import { AuthenticatedUserContext } from '../contexts/AuthenticatedUserProvider';
 
 export default function CreatePost() {
   const [text, onChangeText] = useState("");

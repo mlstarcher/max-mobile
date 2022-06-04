@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AuthenticatedUserProvider } from './AuthenticatedUserProvider';
+import { AuthenticatedUserProvider } from '../contexts/AuthenticatedUserProvider';
 import RootNavigator from './RootNavigator';
 
 /**
