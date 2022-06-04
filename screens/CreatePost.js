@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { Button } from '../components';
 // import { black } from 'react-native-paper/lib/typescript/styles/colors';
-import Firebase from '../config/firebase';
+import Firebase from '../config/firebase1';
 import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
 
 const db = Firebase.firestore();

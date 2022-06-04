@@ -1,13 +1,13 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Firebase from '../config/firebase';
+import { auth } from '../config/firebase';
 import HomeScreen from '../screens/HomeScreen';
 import CreatePost from '../screens/CreatePost';
 import { IconButton } from '../components';
 
 const Stack = createStackNavigator();
-const auth = Firebase.auth();
+//const auth = Firebase.auth();
 
 export default function HomeStack() {
   const handleSignOut = async () => {

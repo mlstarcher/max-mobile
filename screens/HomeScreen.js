@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 import { IconButton } from '../components';
-import Firebase from '../config/firebase';
+import Firebase from '../config/firebase1';
 import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
 import Post from '../components/Post';
 
