@@ -4,13 +4,14 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 import { IconButton } from '../components';
 import { auth, db } from '../config/firebase'
-import { AuthenticatedUserContext } from '../contexts/AuthenticatedUserProvider';
+import { useAuth } from '../contexts/AuthenticatedUserProvider';
+// import { AuthenticatedUserContext } from '../contexts/AuthenticatedUserProvider';
 // import Post from '../components/Post';
 
 export default function HomeScreen({ navigation }) {
-  console.log('HomeScreen');
   const [posts, setPosts] = useState([]);
-  const { user } = useContext(AuthenticatedUserContext);
+  const { user, loading } = useAuth().value;
+  console.log('user data shape: ', user)
 
   useEffect(() => {
     let allPosts = [];
@@ -32,6 +33,7 @@ export default function HomeScreen({ navigation }) {
   // };
   return (
     <View style={styles.container}>
+      <Text></Text>
       <StatusBar style='dark-content' />
       <View style={{
         flexDirection: 'row',

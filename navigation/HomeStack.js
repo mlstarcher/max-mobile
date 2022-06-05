@@ -6,17 +6,19 @@ import HomeScreen from '../screens/HomeScreen';
 import CreatePost from '../screens/CreatePost';
 import { IconButton } from '../components';
 import { useEffect } from 'react/cjs/react.production.min';
+import { useAuth } from '../contexts/AuthenticatedUserProvider';
 
 const Stack = createStackNavigator();
 
 export default function HomeStack({ logOut }) {
-  // const handleSignOut = async () => {
-  //   try {
-  //     await auth.signOut();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const { signOut } = useAuth().value;
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Stack.Navigator
