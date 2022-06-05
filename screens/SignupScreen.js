@@ -1,15 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button as RNButton } from 'react-native';
 
 import { Button, InputField, ErrorMessage } from '../components';
-// import Firebase from '../config/firebase';
+import { useAuth } from '../contexts/AuthenticatedUserProvider';
 
-// const auth = Firebase.auth();
+// import Firebase from '../config/firebase';
 
 export default function SignupScreen({ navigation }) {
   console.log('SignupScreen');
+  const { signup, user } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisibility, setPasswordVisibility] = useState(true);
@@ -27,9 +27,12 @@ export default function SignupScreen({ navigation }) {
   };
 
   const onHandleSignup = async () => {
+    console.log('user: ', user);
     try {
+      // if (passwordRef.current.value !== passwordConfirmRef.current.value)
+      // return setSignupError('Passwords do not match');
       if (email !== '' && password !== '') {
-        await auth.createUserWithEmailAndPassword(email, password);
+        await signup(email, password);
       }
     } catch (error) {
       setSignupError(error.message);

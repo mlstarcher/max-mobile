@@ -6,6 +6,7 @@ import { auth } from '../config/firebase';
 export const AuthenticatedUserContext = createContext({});
 
 export function useAuth() {
+  console.log('useAuth');
   return useContext(AuthenticatedUserContext);
 }
 
@@ -13,7 +14,7 @@ export const AuthenticatedUserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true)
 
-  function signup(email, password) {
+  function signup(email, password, firstName, lastName) {
     return createUserWithEmailAndPassword(auth, email, password).then(cred => {
       const docRef = doc(db, 'users', cred.user.uid)
       const payload = {
@@ -38,7 +39,6 @@ export const AuthenticatedUserProvider = ({ children }) => {
       setUser(currentUser)
       setLoading(false)
     })
-    console.log('user: ', JSON.stringify(user))
     return unsubscribe;
   }, [])
 
