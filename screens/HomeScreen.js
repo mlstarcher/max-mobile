@@ -11,45 +11,37 @@ import { useAuth } from '../contexts/AuthenticatedUserProvider';
 export default function HomeScreen({ navigation }) {
   const [posts, setPosts] = useState([]);
   const { user, loading } = useAuth().value;
-  console.log('user data shape: ', user)
 
   useEffect(() => {
-    let allPosts = [];
+    let allPosts = [1, 2];
     // db.collection("posts").get().then((querySnapshot) => {
     //   querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        //allPosts.push(doc.data());
-      // });
+    // doc.data() is never undefined for query doc snapshots
+    //allPosts.push(doc.data());
+    // });
     // });
     //setPosts(allPosts);
   })
 
-  // const handleSignOut = async () => {
-  //   try {
-  //     await auth.signOut();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   return (
     <View style={styles.container}>
-      <Text></Text>
       <StatusBar style='dark-content' />
-      <View style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingLeft: 12
-      }}>
+      <View style={styles.rowStart}>
+        <Text style={styles.title}>Welcome!</Text>
+      </View>
+      <View style={styles.row}>
+        {posts.map(post => {
+          <Post />
+        })}
+      </View>
+      <View style={styles.rowEnd}>
         <IconButton
-          name='pluscircleo'
+          name='pencil-circle-outline'
           size={48}
           color='#5E747F'
           onPress={() => navigation.navigate('CreatePost')}
         />
       </View>
-      {posts.map(post => {
-        <Post/>
-      })}
     </View>
   );
 }
@@ -60,11 +52,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#F3E1DD',
     paddingTop: 20,
   },
-  row: {
+  rowStart: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 24
+    marginBottom: 12,
+    paddingHorizontal: 12
+  },
+  rowEnd: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom: 12,
+    paddingHorizontal: 12
   },
   title: {
     fontSize: 24,
