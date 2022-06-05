@@ -6,11 +6,10 @@ import { Button, InputField, ErrorMessage } from '../components';
 import { useAuth } from '../contexts/AuthenticatedUserProvider';
 
 export default function SignupScreen({ navigation }) {
-  //const authContext = useAuth();
-  //const signup = authContext.value.signup;
-  //console.log('SignupScreen, useAuth: ', signup);
   const { signup, user, loading } = useAuth().value;
   const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [rightIcon, setRightIcon] = useState('eye');
@@ -27,12 +26,11 @@ export default function SignupScreen({ navigation }) {
   };
 
   const onHandleSignup = async () => {
-    console.log('signup: ', signup);
     try {
       // if (passwordRef.current.value !== passwordConfirmRef.current.value)
       // return setSignupError('Passwords do not match');
       if (email !== '' && password !== '') {
-        await signup(email, password);
+        await signup(email, password, firstName, lastName);
       }
     } catch (error) {
       setSignupError(error.message);
@@ -51,8 +49,41 @@ export default function SignupScreen({ navigation }) {
           backgroundColor: '#fff',
           marginBottom: 20
         }}
+        leftIcon='account'
+        placeholder='First Name'
+        autoCapitalize='none'
+        textContentType='givenName'
+        autoFocus={true}
+        value={firstName}
+        onChangeText={text => setFirstName(text)}
+      />
+      <InputField
+        inputStyle={{
+          fontSize: 14
+        }}
+        containerStyle={{
+          backgroundColor: '#fff',
+          marginBottom: 20
+        }}
+        leftIcon='account'
+        placeholder='Last Name'
+        autoCapitalize='none'
+        // keyboardType='email-address'
+        textContentType='familyName'
+        autoFocus={true}
+        value={lastName}
+        onChangeText={text => setLastName(text)}
+      />
+      <InputField
+        inputStyle={{
+          fontSize: 14
+        }}
+        containerStyle={{
+          backgroundColor: '#fff',
+          marginBottom: 20
+        }}
         leftIcon='email'
-        placeholder='Enter email'
+        placeholder='Email'
         autoCapitalize='none'
         keyboardType='email-address'
         textContentType='emailAddress'
@@ -69,7 +100,7 @@ export default function SignupScreen({ navigation }) {
           marginBottom: 20
         }}
         leftIcon='lock'
-        placeholder='Enter password'
+        placeholder='Password'
         autoCapitalize='none'
         autoCorrect={false}
         secureTextEntry={passwordVisibility}
