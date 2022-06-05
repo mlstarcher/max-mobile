@@ -10,11 +10,12 @@ import { useAuth } from '../contexts/AuthenticatedUserProvider';
 
 const Stack = createStackNavigator();
 
-export default function HomeStack({ logOut }) {
-  const { signOut } = useAuth().value;
-  const handleSignOut = async () => {
+export default function HomeStack({  }) {
+  const { logOut } = useAuth().value;
+  const handleLogOut = async () => {
     try {
-      await signOut();
+      console.log('logOut fired');
+      await logOut();
     } catch (error) {
       console.log(error);
     }
@@ -32,7 +33,7 @@ export default function HomeStack({ logOut }) {
             name='logout'
             size={24}
             color='#fff'
-            onPress={logOut}
+            onPress={handleLogOut}
           />
         ),
         headerMode: 'float',
