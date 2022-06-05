@@ -2,19 +2,19 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View, Button as RNButton } from 'react-native';
+import {} from 'react';
 
 import { Button, InputField, ErrorMessage } from '../components';
-// import Firebase from '../config/firebase';
-
-// const auth = Firebase.auth();
+// import auth from '../config/firebase';
+import { useAuth } from '../contexts/AuthenticatedUserProvider';
 
 export default function LoginScreen({ navigation }) {
-  console.log('LoginScreen')
+  const { login } = useAuth().value;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [rightIcon, setRightIcon] = useState('eye');
-  const [loginError, setLoginError] = useState('');
+  const [error, setError] = useState('');
 
   const handlePasswordVisibility = () => {
     if (rightIcon === 'eye') {
@@ -26,15 +26,14 @@ export default function LoginScreen({ navigation }) {
     }
   };
 
-  const onLogin = async () => {
+   async function onLogin() {
     try {
-      if (email !== '' && password !== '') {
-        await auth.signInWithEmailAndPassword(email, password);
-      }
-    } catch (error) {
-      setLoginError(error.message);
+      setError('')
+      await login(email, password)
+    } catch {
+      setError('Failed to sign in')
     }
-  };
+  }
 
   return (
     <View style={styles.container}>
@@ -76,7 +75,7 @@ export default function LoginScreen({ navigation }) {
         onChangeText={text => setPassword(text)}
         handlePasswordVisibility={handlePasswordVisibility}
       />
-      {loginError ? <ErrorMessage error={loginError} visible={true} /> : null}
+      {error ? <ErrorMessage error={error} visible={true} /> : null}
       <Button
         onPress={onLogin}
         backgroundColor='#006FB9'
