@@ -5,11 +5,11 @@ import { StyleSheet, Text, View, Button as RNButton } from 'react-native';
 import { Button, InputField, ErrorMessage } from '../components';
 import { useAuth } from '../contexts/AuthenticatedUserProvider';
 
-// import Firebase from '../config/firebase';
-
 export default function SignupScreen({ navigation }) {
-  console.log('SignupScreen');
-  const { signup, user } = useAuth();
+  //const authContext = useAuth();
+  //const signup = authContext.value.signup;
+  //console.log('SignupScreen, useAuth: ', signup);
+  const { signup, user, loading } = useAuth().value;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisibility, setPasswordVisibility] = useState(true);
@@ -27,7 +27,7 @@ export default function SignupScreen({ navigation }) {
   };
 
   const onHandleSignup = async () => {
-    console.log('user: ', user);
+    console.log('signup: ', signup);
     try {
       // if (passwordRef.current.value !== passwordConfirmRef.current.value)
       // return setSignupError('Passwords do not match');

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AuthenticatedUserProvider } from '../contexts/AuthenticatedUserProvider';
+// import { AuthenticatedUserProvider } from '../contexts/AuthenticatedUserProvider';
 import RootNavigator from './RootNavigator';
 
 /**
@@ -10,8 +10,8 @@ import RootNavigator from './RootNavigator';
 export default function Routes() {
   console.log('index')
   return (
-    <AuthenticatedUserProvider>
+    // <AuthenticatedUserProvider>
       <RootNavigator />
-    </AuthenticatedUserProvider>
+    // </AuthenticatedUserProvider>
   );
 }
