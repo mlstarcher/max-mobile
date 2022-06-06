@@ -10,7 +10,6 @@ import HomeStack from './HomeStack';
 
 export default function RootNavigator() {
   const { user, setUser, loading } = useAuth().value;
-  console.log('RootNavigator')
 
   if (loading) {
     return (

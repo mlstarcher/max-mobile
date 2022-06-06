@@ -7,7 +7,6 @@ import { auth, db } from '../config/firebase';
 export const AuthenticatedUserContext = createContext({});
 
 export function useAuth() {
-  console.log('useAuth');
   return useContext(AuthenticatedUserContext);
 }
 

@@ -12,8 +12,8 @@ export default function HomeScreen({ navigation }) {
   const [posts, setPosts] = useState([]);
   const { user, loading } = useAuth().value;
 
-  useEffect(() => {
-    let allPosts = [1, 2];
+  // useEffect(() => {
+  //   let allPosts = [1, 2];
     // db.collection("posts").get().then((querySnapshot) => {
     //   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
@@ -21,7 +21,23 @@ export default function HomeScreen({ navigation }) {
     // });
     // });
     //setPosts(allPosts);
-  })
+  // })
+
+  // useEffect(() => {
+  //   if (!loading) {
+  //     FirestoreService.getGroceryList(groceryListId)
+  //       .then(groceryList => {
+  //         if (groceryList.exists) {
+  //           setError(null);
+  //           setGroceryList(groceryList.data());
+  //         } else {
+  //           setError('grocery-list-not-found');
+  //           setGroceryListId();
+  //         }
+  //       })
+  //       .catch(() => setError('grocery-list-get-fail'));
+  //   }
+  // }, [groceryListId, setGroceryListId]);
 
   return (
     <View style={styles.container}>

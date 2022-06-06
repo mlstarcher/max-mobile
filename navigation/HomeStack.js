@@ -14,7 +14,6 @@ export default function HomeStack({  }) {
   const { logOut } = useAuth().value;
   const handleLogOut = async () => {
     try {
-      console.log('logOut fired');
       await logOut();
     } catch (error) {
       console.log(error);
