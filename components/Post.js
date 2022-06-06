@@ -3,22 +3,22 @@ import React from 'react'
 
 export default function Post({ post }) {
   return (
-    <View>
-      <Text style={styles.text}>Post</Text>
+    <View style={styles.card}>
+      <Text style={styles.text}>WTF Mate</Text>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
+  card: {
     flex: 1,
-    backgroundColor: '#F3E1DD',
+    backgroundColor: '#fff',
     paddingTop: 80,
     paddingHorizontal: 12
   },
   text: {
     fontSize: 16,
     fontWeight: 'normal',
-    color: '#fff'
+    color: 'black'
   }
 })

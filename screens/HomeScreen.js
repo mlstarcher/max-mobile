@@ -16,7 +16,7 @@ export default function HomeScreen({ navigation }) {
   const fetchPosts = async () => {
     const data = await getDocs(collection(db, 'posts'));
     data.docs.forEach(item => {
-      console.log(item.id, " => ", item.data());
+      // console.log(item.id, " => ", item.data());
       setPosts([...posts, item.data()])
     })
   }
@@ -33,8 +33,7 @@ export default function HomeScreen({ navigation }) {
       </View>
       <View >
         {posts.map((post, index) => {
-          // return <Post props={post} key={index}/>
-          return <Text>WTF Mate</Text>
+          return <Post props={post} key={index}/>
         })}
       </View>
       <View style={styles.rowEnd}>
