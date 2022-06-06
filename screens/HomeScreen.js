@@ -5,49 +5,36 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { IconButton } from '../components';
 import { auth, db } from '../config/firebase'
 import { useAuth } from '../contexts/AuthenticatedUserProvider';
-// import { AuthenticatedUserContext } from '../contexts/AuthenticatedUserProvider';
-// import Post from '../components/Post';
+import { collection, doc, setDoc, query, where, getDocs } from "firebase/firestore";
+import Post from '../components/Post';
 
 export default function HomeScreen({ navigation }) {
-  const [posts, setPosts] = useState([]);
   const { user, loading } = useAuth().value;
+  const [posts, setPosts] = useState([]);
+  const postRef = collection(db, "posts");
 
-  // useEffect(() => {
-  //   let allPosts = [1, 2];
-    // db.collection("posts").get().then((querySnapshot) => {
-    //   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    //allPosts.push(doc.data());
-    // });
-    // });
-    //setPosts(allPosts);
-  // })
+  const fetchPosts = async () => {
+    const data = await getDocs(collection(db, 'posts'));
+    data.docs.forEach(item => {
+      console.log(item.id, " => ", item.data());
+      setPosts([...posts, item.data()])
+    })
+  }
 
-  // useEffect(() => {
-  //   if (!loading) {
-  //     FirestoreService.getGroceryList(groceryListId)
-  //       .then(groceryList => {
-  //         if (groceryList.exists) {
-  //           setError(null);
-  //           setGroceryList(groceryList.data());
-  //         } else {
-  //           setError('grocery-list-not-found');
-  //           setGroceryListId();
-  //         }
-  //       })
-  //       .catch(() => setError('grocery-list-get-fail'));
-  //   }
-  // }, [groceryListId, setGroceryListId]);
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   return (
     <View style={styles.container}>
       <StatusBar style='dark-content' />
       <View style={styles.rowStart}>
-        <Text style={styles.title}>Welcome!</Text>
+        <Text style={styles.title}>Welcome {user.displayName}!</Text>
       </View>
-      <View style={styles.row}>
-        {posts.map(post => {
-          <Post />
+      <View >
+        {posts.map((post, index) => {
+          // return <Post props={post} key={index}/>
+          return <Text>WTF Mate</Text>
         })}
       </View>
       <View style={styles.rowEnd}>
