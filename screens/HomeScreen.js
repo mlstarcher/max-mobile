@@ -16,7 +16,7 @@ export default function HomeScreen({ navigation }) {
   const fetchPosts = async () => {
     const data = await getDocs(collection(db, 'posts'));
     data.docs.forEach(item => {
-      // console.log(item.id, " => ", item.data());
+      console.log(item.id, " => ", item.data());
       setPosts([...posts, item.data()])
     })
   }
