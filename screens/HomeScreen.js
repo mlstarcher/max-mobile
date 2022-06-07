@@ -33,7 +33,7 @@ export default function HomeScreen({ navigation }) {
       </View>
       <View >
         {posts.map((post, index) => {
-          return <Post props={post} key={index}/>
+          return <Post currentPost={post} key={index}/>
         })}
       </View>
       <View style={styles.rowEnd}>
