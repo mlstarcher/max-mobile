@@ -14,6 +14,7 @@ export default function HomeScreen({ navigation }) {
   const postRef = collection(db, "posts");
 
   const fetchPosts = async () => {
+    setPosts([]);
     const data = await getDocs(collection(db, 'posts'));
     data.docs.forEach(item => {
       console.log(item.id, " => ", item.data());
@@ -28,13 +29,15 @@ export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar style='dark-content' />
-      <View style={styles.rowStart}>
-        <Text style={styles.title}>Welcome {user.displayName}!</Text>
-      </View>
-      <View >
-        {posts.map((post, index) => {
-          return <Post currentPost={post} key={index}/>
-        })}
+      <View>
+        <View style={styles.rowStart}>
+          <Text style={styles.title}>Welcome {user.displayName}!</Text>
+        </View>
+        <View >
+          {posts.map((post, index) => {
+            return <Post currentPost={post} key={index}/>
+          })}
+        </View>
       </View>
       <View style={styles.rowEnd}>
         <IconButton
@@ -52,6 +55,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F3E1DD',
+    justifyContent: 'space-between',
     paddingTop: 20,
   },
   rowStart: {
@@ -65,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginBottom: 12,
-    paddingHorizontal: 12
+    padding: 12
   },
   title: {
     fontSize: 24,

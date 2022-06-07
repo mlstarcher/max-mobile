@@ -13,11 +13,10 @@ export default function Post({ currentPost }) {
 const styles = StyleSheet.create({
   card: {
     marginTop: 80,
-    marginHorizontal: 12,
     padding: 12,
     borderWidth: 1,
     borderColor: "#20232a",
-    borderRadius: 20
+    // borderRadius: 20
   },
   title: {
     fontSize: 24,
