@@ -22,7 +22,7 @@ export default function CreatePost() {
     }
     const myCollRef = collection(db, "posts");
     const myDocRef = doc(myCollRef);
-    await setDoc(myDocRef, payload);
+    //await setDoc(myDocRef, payload);
   }
 
   return (
